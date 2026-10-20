@@ -21,14 +21,14 @@ const T = {
     f3Title: "Ostacoli golosi", f3Text: "Ghiaccio da rompere, biscotti da sbriciolare, cioccolato che si espande, gabbie di liquirizia e Gobblins a tempo da fermare prima del boom.",
     f4Title: "Forzieri e potenziamenti", f4Text: "Forzieri di bronzo, argento e oro che si aprono col tempo, martello, mescolata, mosse extra e bombe da portare in partita.",
     f5Title: "Missioni e regali", f5Text: "Tre missioni nuove ogni giorno e un regalo che cresce per sette giorni di fila, fino al forziere d'oro.",
-    f6Title: "Feste a tema", f6Text: "Ad Halloween e a Natale cambiano grafica, musica e i vestiti dei Gobblins, da soli, al momento giusto.",
+    f6Title: "Feste a tema", f6Text: "Befana, San Valentino, Carnevale, Pasqua, estate, Halloween e Natale: grafica, musica e vestiti dei Gobblins cambiano da soli, al momento giusto.",
     islEyebrow: "La mappa", islTitle: "Un arcipelago da divorare",
     islLead: "Ogni isola nasconde dieci livelli e un forziere alla fine. E dopo l'ultima… ce n'è sempre un'altra.",
     islands: ["Prato Zuccherino", "Spiaggia di Biscotto", "Laguna di Gelatina", "Vette di Panna", "Vulcano di Cioccolato", "Nuvole di Zucchero Filato"],
     island: "Isola", levels: "livelli",
     seaEyebrow: "Si cambia d'abito", seaTitle: "Stagioni a tema",
-    seaLead: "Il gioco segue il calendario: zucche e pipistrelli ad Halloween, neve e berretti a Natale. Puoi anche scegliere il tuo tema preferito dalle impostazioni.",
-    thClassic: "Classico", thChristmas: "Natale",
+    seaLead: "Il gioco segue il calendario: orecchie da coniglio a Pasqua, coriandoli a Carnevale, cuori a San Valentino, occhiali da sole d'estate, zucche ad Halloween e berretti a Natale. Puoi anche scegliere la tua festa preferita dalle impostazioni.",
+    thClassic: "Classico", thChristmas: "Natale", thEaster: "Pasqua", thCarnival: "Carnevale", thValentine: "San Valentino", thBefana: "Befana", thSummer: "Estate",
     shotEyebrow: "Dal gioco", shotTitle: "Guarda che spettacolo",
     ctaTitle: "I Gobblins hanno fame!", ctaLead: "Presto su iPhone, iPad e Android. Gratis, senza pubblicità e senza registrazione.",
     support: "Supporto", contact: "Contatti", get: "Scarica", swipe: "← scorri →",
@@ -50,14 +50,14 @@ const T = {
     f3Title: "Tasty obstacles", f3Text: "Ice to crack, cookies to crumble, spreading chocolate, licorice cages and timed Gobblins to stop before they go boom.",
     f4Title: "Chests and boosters", f4Text: "Bronze, silver and gold chests that unlock over time, plus hammers, shuffles, extra moves and bombs to bring into a level.",
     f5Title: "Missions and gifts", f5Text: "Three new missions every day and a gift that grows for seven days in a row, up to a gold chest.",
-    f6Title: "Holiday themes", f6Text: "At Halloween and Christmas the art, the music and the Gobblins' outfits change by themselves, right on time.",
+    f6Title: "Holiday themes", f6Text: "Epiphany, Valentine's Day, Carnival, Easter, summer, Halloween and Christmas: the art, the music and the Gobblins' outfits change by themselves, right on time.",
     islEyebrow: "The map", islTitle: "An archipelago to devour",
     islLead: "Every island hides ten levels and a chest at the end. And after the last one… there's always another.",
     islands: ["Sugar Meadow", "Cookie Beach", "Jelly Lagoon", "Whipped Peaks", "Choco Volcano", "Candyfloss Clouds"],
     island: "Island", levels: "levels",
     seaEyebrow: "A change of clothes", seaTitle: "Seasonal themes",
-    seaLead: "The game follows the calendar: pumpkins and bats at Halloween, snow and woolly hats at Christmas. You can also pick your favourite theme in the settings.",
-    thClassic: "Classic", thChristmas: "Christmas",
+    seaLead: "The game follows the calendar: bunny ears at Easter, confetti at Carnival, hearts on Valentine's Day, sunglasses in summer, pumpkins at Halloween and woolly hats at Christmas. You can also pick your favourite in the settings.",
+    thClassic: "Classic", thChristmas: "Christmas", thEaster: "Easter", thCarnival: "Carnival", thValentine: "Valentine's", thBefana: "Epiphany", thSummer: "Summer",
     shotEyebrow: "From the game", shotTitle: "See it in action",
     ctaTitle: "The Gobblins are hungry!", ctaLead: "Coming soon to iPhone, iPad and Android. Free, no ads and no sign-up.",
     support: "Support", contact: "Contact", get: "Get it", swipe: "← swipe →",
@@ -153,7 +153,7 @@ if (!reduced) {
 
 // Parade: two copies of the six Gobblins in three outfits scroll forever.
 const parade = $("#parade");
-const outfits = ["classic", "halloween", "christmas"].flatMap((th) => [0, 1, 2, 3, 4, 5].map((k) => `${th}-${k}`));
+const outfits = ["classic", "easter", "summer", "halloween", "christmas", "carnival"].flatMap((th) => [0, 1, 2, 3, 4, 5].map((k) => `${th}-${k}`));
 parade.innerHTML = [...outfits, ...outfits].map((p, i) => `<img src="assets/${p}.webp" alt="" style="--i:${i}" />`).join("");
 
 addEventListener("scroll", () => $("nav.top").classList.toggle("scrolled", scrollY > 30), { passive: true });
