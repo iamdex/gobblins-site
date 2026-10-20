@@ -194,6 +194,11 @@ nav.top .links a:active { background: var(--glass); }
 .phone { width: var(--item); aspect-ratio: 9 / 19.5; border-radius: 34px; padding: 9px; background: #1b1030; box-shadow: var(--shadow), inset 0 0 0 2px rgba(255, 255, 255, 0.15); }
 .phone img { width: 100%; height: 100%; object-fit: cover; border-radius: 26px; }
 
+/* ── gameplay video ──────────────────────────────── */
+.watch { display: grid; gap: 30px; justify-items: center; text-align: center; }
+.phone.big { width: min(300px, 78vw); }
+.phone video { width: 100%; height: 100%; object-fit: cover; border-radius: 26px; display: block; background: #1b1030; }
+
 /* ── seasons ─────────────────────────────────────── */
 .seasons { display: grid; gap: 26px; align-items: center; }
 .tabs { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 20px; }
@@ -256,6 +261,9 @@ footer nav a { padding: 8px 4px; }
   .play { grid-template-columns: 1fr auto; text-align: left; justify-items: stretch; gap: 56px; }
   .play .lead { margin-inline: 0; }
   .features { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .watch { grid-template-columns: 1fr auto; gap: 64px; text-align: left; justify-items: stretch; align-items: center; }
+  .watch .lead { margin-inline: 0; }
+  .phone.big { width: 320px; transform: rotate(2deg); }
   .seasons { grid-template-columns: 1fr 1.1fr; gap: 48px; }
   .seasons > div:first-child { text-align: left; }
   .seasons .lead { margin-inline: 0; }

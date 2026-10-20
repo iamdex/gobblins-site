@@ -32,6 +32,8 @@ const T = {
     shotEyebrow: "Dal gioco", shotTitle: "Guarda che spettacolo",
     ctaTitle: "I Gobblins hanno fame!", ctaLead: "Presto su iPhone, iPad e Android. Gratis, senza pubblicità e senza registrazione.",
     support: "Supporto", contact: "Contatti", get: "Scarica", swipe: "← scorri →",
+    vidEyebrow: "Guardalo in azione", vidTitle: "Dalla prima mossa alla festa",
+    vidLead: "Un livello vero dell'isola 9: gabbie di liquirizia da spezzare, una bomba e un arcobaleno per partire forte e, alla fine, le mosse avanzate che diventano strisce esplosive.",
   },
   en: {
     navPlay: "Try it", navFeatures: "Features", navSeasons: "Seasons", navShots: "Screenshots",
@@ -61,6 +63,8 @@ const T = {
     shotEyebrow: "From the game", shotTitle: "See it in action",
     ctaTitle: "The Gobblins are hungry!", ctaLead: "Coming soon to iPhone, iPad and Android. Free, no ads and no sign-up.",
     support: "Support", contact: "Contact", get: "Get it", swipe: "← swipe →",
+    vidEyebrow: "See it in action", vidTitle: "From first move to party",
+    vidLead: "A real level from island 9: licorice cages to break, a bomb and a rainbow for a flying start and, at the end, the moves left turning into exploding stripes.",
   },
 };
 
@@ -157,6 +161,14 @@ const outfits = ["classic", "easter", "summer", "halloween", "christmas", "carni
 parade.innerHTML = [...outfits, ...outfits].map((p, i) => `<img src="assets/${p}.webp" alt="" style="--i:${i}" />`).join("");
 
 addEventListener("scroll", () => $("nav.top").classList.toggle("scrolled", scrollY > 30), { passive: true });
+
+// The gameplay video plays muted on its own; with reduced motion it waits for the player's tap.
+const video = $("#gameplay");
+if (reduced) {
+  video.removeAttribute("autoplay");
+  video.pause();
+  video.controls = true;
+}
 
 // Phone menu: the burger opens the links; picking one (or tapping outside) closes it.
 const nav = $("nav.top");
