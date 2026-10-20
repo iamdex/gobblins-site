@@ -2,16 +2,168 @@
 <html lang="it">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Gobblins</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Gobblins · Match 3 tra mostri di gelatina</title>
+    <meta name="description" content="Gobblins: il match 3 coi mostri di gelatina. Isole infinite, combo esplosive, forzieri, missioni giornaliere e stagioni a tema. Gratis, senza pubblicità." />
+    <meta name="theme-color" content="#4b23a8" />
+    <meta property="og:title" content="Gobblins" />
+    <meta property="og:description" content="Il match 3 coi mostri di gelatina · The jelly monster match 3" />
+    <meta property="og:image" content="https://iamdex.github.io/gobblins-site/assets/keyart.webp" />
+    <link rel="icon" href="assets/favicon.png" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <main>
-      <h1>Gobblins</h1>
-      <p>Match 3 tra mostri di gelatina · Jelly monster match 3</p>
-      <p><a href="support.html">Supporto / Support</a> · <a href="privacy.html">Privacy</a></p>
-      <p class="foot">© 2026 Davide Espertini</p>
-    </main>
+    <nav class="top">
+      <a class="brand candy" href="#top"><img src="assets/icon.webp" alt="" />Gobblins</a>
+      <div class="links">
+        <a href="#gioca" data-i18n="navPlay">Prova</a>
+        <a href="#caratteristiche" data-i18n="navFeatures">Caratteristiche</a>
+        <a href="#stagioni" data-i18n="navSeasons">Stagioni</a>
+        <a href="#screenshot" data-i18n="navShots">Screenshot</a>
+      </div>
+      <button class="lang" id="lang" type="button" aria-label="Language">EN</button>
+    </nav>
+
+    <header class="hero" id="top">
+      <div class="floaters" id="floaters"></div>
+      <div class="wrap grid">
+        <div>
+          <h1 class="candy">Gobblins</h1>
+          <p class="tag" data-i18n="tag">Il match 3 coi mostri di gelatina</p>
+          <p class="lead" data-i18n="heroLead">Sei mostriciattoli golosi, isole infinite da esplorare e combo che fanno tremare lo schermo. Abbinali, falli scoppiare e scopri cosa c'è nel prossimo forziere!</p>
+          <div class="stores" data-stores></div>
+          <p class="free" data-i18n="free">Gratis · niente pubblicità · gioca anche offline</p>
+        </div>
+        <div class="keyart"><img src="assets/keyart.webp" alt="I sei Gobblins che saltano insieme" width="1100" height="560" /></div>
+      </div>
+    </header>
+
+    <div class="parade" aria-hidden="true"><div class="track" id="parade"></div></div>
+
+    <section id="gioca">
+      <div class="wrap play">
+        <div class="reveal">
+          <p class="eyebrow" data-i18n="playEyebrow">Provalo subito</p>
+          <h2 class="section-title candy" data-i18n="playTitle">Scambia, abbina, scoppia!</h2>
+          <p class="lead" data-i18n="playLead">Trascina un Gobblin verso un vicino, oppure tocca due Gobblins uno dopo l'altro: allineane tre o più dello stesso tipo e guardali sparire. Le cascate valgono di più!</p>
+        </div>
+        <div class="board-box reveal" style="--i: 1">
+          <div class="hud">
+            <div><b id="score">0</b><span data-i18n="score">Punti</span></div>
+            <div><b id="best">0</b><span data-i18n="best">Combo migliore</span></div>
+          </div>
+          <div class="board" id="board" aria-label="Mini partita"></div>
+          <p class="hint" data-i18n="hint">Nel gioco completo: strisce, bombe, arcobaleni e combo tra speciali</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="caratteristiche">
+      <div class="wrap">
+        <div class="center reveal">
+          <p class="eyebrow" data-i18n="featEyebrow">Cosa ti aspetta</p>
+          <h2 class="section-title candy" data-i18n="featTitle">Dolce fuori, tosto dentro</h2>
+          <p class="lead" data-i18n="featLead">Un puzzle rilassante da giocare in un minuto, con abbastanza sorprese da tenerti incollato per mesi.</p>
+        </div>
+        <div class="features">
+          <article class="card reveal" style="--i: 0">
+            <span class="chip" style="--chip: #e0565b" data-i18n="chipCombo">Combo</span>
+            <div class="art"><img src="assets/lineH-2.webp" alt="" /><img src="assets/bomb-3.webp" alt="" /><img src="assets/rainbow.webp" alt="" /></div>
+            <h3 data-i18n="f1Title">Pezzi speciali</h3>
+            <p data-i18n="f1Text">4 in fila fanno un pezzo a strisce, una L o una T una bomba, 5 in fila l'arcobaleno. Scambia due speciali tra loro per una super combo.</p>
+          </article>
+          <article class="card reveal" style="--i: 1">
+            <span class="chip" style="--chip: #2a8fd0" data-i18n="chipEndless">Infinito</span>
+            <div class="art"><img src="assets/island-lagoon.webp" alt="" style="width: 120px; height: 96px" /></div>
+            <h3 data-i18n="f2Title">Isole senza fine</h3>
+            <p data-i18n="f2Text">Prati di zucchero, spiagge di biscotto, vulcani di cioccolato: 10 livelli per isola, con tappe difficili e super difficili da conquistare.</p>
+          </article>
+          <article class="card reveal" style="--i: 2">
+            <span class="chip" style="--chip: #7b4a2a" data-i18n="chipObstacles">Ostacoli</span>
+            <div class="art"><img class="sm" src="assets/ice2.webp" alt="" /><img class="sm" src="assets/chocolate.webp" alt="" /><img class="sm" src="assets/cage2.webp" alt="" /><img class="sm" src="assets/fuse.webp" alt="" /></div>
+            <h3 data-i18n="f3Title">Ostacoli golosi</h3>
+            <p data-i18n="f3Text">Ghiaccio da rompere, biscotti da sbriciolare, cioccolato che si espande, gabbie di liquirizia e Gobblins a tempo da fermare prima del boom.</p>
+          </article>
+          <article class="card reveal" style="--i: 0">
+            <span class="chip" style="--chip: #d98a00" data-i18n="chipPrizes">Premi</span>
+            <div class="art"><img src="assets/chest.webp" alt="" /><img class="sm" src="assets/coin.webp" alt="" /><img class="sm" src="assets/hammer.webp" alt="" /></div>
+            <h3 data-i18n="f4Title">Forzieri e potenziamenti</h3>
+            <p data-i18n="f4Text">Forzieri di bronzo, argento e oro che si aprono col tempo, martello, mescolata, mosse extra e bombe da portare in partita.</p>
+          </article>
+          <article class="card reveal" style="--i: 1">
+            <span class="chip" style="--chip: #2f9e44" data-i18n="chipDaily">Ogni giorno</span>
+            <div class="art"><img class="sm" src="assets/moves.webp" alt="" /><img src="assets/classic-1.webp" alt="" /><img class="sm" src="assets/shuffle.webp" alt="" /></div>
+            <h3 data-i18n="f5Title">Missioni e regali</h3>
+            <p data-i18n="f5Text">Tre missioni nuove ogni giorno e un regalo che cresce per sette giorni di fila, fino al forziere d'oro.</p>
+          </article>
+          <article class="card reveal" style="--i: 2">
+            <span class="chip" style="--chip: #9b6cf0" data-i18n="chipSeasons">Stagioni</span>
+            <div class="art"><img src="assets/halloween-0.webp" alt="" /><img src="assets/christmas-3.webp" alt="" /><img src="assets/halloween-4.webp" alt="" /></div>
+            <h3 data-i18n="f6Title">Feste a tema</h3>
+            <p data-i18n="f6Text">Ad Halloween e a Natale cambiano grafica, musica e i vestiti dei Gobblins, da soli, al momento giusto.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="isole">
+      <div class="wrap center reveal">
+        <p class="eyebrow" data-i18n="islEyebrow">La mappa</p>
+        <h2 class="section-title candy" data-i18n="islTitle">Un arcipelago da divorare</h2>
+        <p class="lead" data-i18n="islLead">Ogni isola nasconde dieci livelli e un forziere alla fine. E dopo l'ultima… ce n'è sempre un'altra.</p>
+      </div>
+      <div class="islands" id="islands"></div>
+    </section>
+
+    <section id="stagioni">
+      <div class="wrap seasons">
+        <div class="reveal">
+          <p class="eyebrow" data-i18n="seaEyebrow">Si cambia d'abito</p>
+          <h2 class="section-title candy" data-i18n="seaTitle">Stagioni a tema</h2>
+          <p class="lead" data-i18n="seaLead">Il gioco segue il calendario: zucche e pipistrelli ad Halloween, neve e berretti a Natale. Puoi anche scegliere il tuo tema preferito dalle impostazioni.</p>
+          <div class="tabs" id="tabs">
+            <button class="btn" type="button" data-theme="classic" aria-pressed="true" data-i18n="thClassic">Classico</button>
+            <button class="btn" type="button" data-theme="halloween" aria-pressed="false">Halloween</button>
+            <button class="btn" type="button" data-theme="christmas" aria-pressed="false" data-i18n="thChristmas">Natale</button>
+          </div>
+        </div>
+        <div class="scene reveal" id="scene" style="--i: 1"><div class="row" id="sceneRow"></div></div>
+      </div>
+    </section>
+
+    <section id="screenshot">
+      <div class="wrap center reveal">
+        <p class="eyebrow" data-i18n="shotEyebrow">Dal gioco</p>
+        <h2 class="section-title candy" data-i18n="shotTitle">Guarda che spettacolo</h2>
+      </div>
+      <div class="shots" id="shots"></div>
+    </section>
+
+    <section class="cta">
+      <div class="wrap">
+        <div class="box reveal">
+          <div class="floaters" id="ctaFloaters"></div>
+          <img class="icon" src="assets/icon.webp" alt="" />
+          <h2 class="section-title candy" data-i18n="ctaTitle">I Gobblins hanno fame!</h2>
+          <p class="lead" style="margin-inline: auto" data-i18n="ctaLead">Presto su iPhone, iPad e Android. Gratis, senza pubblicità e senza registrazione.</p>
+          <div class="stores" data-stores></div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <nav>
+        <a href="support.html" data-i18n="support">Supporto</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="mailto:hellodave@espertini.com" data-i18n="contact">Contatti</a>
+      </nav>
+      © 2026 Davide Espertini
+    </footer>
+
+    <script src="main.js"></script>
   </body>
 </html>
