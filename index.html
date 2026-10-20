@@ -19,13 +19,15 @@
   <body>
     <nav class="top">
       <a class="brand candy" href="#top"><img src="assets/icon.webp" alt="" />Gobblins</a>
-      <div class="links">
+      <div class="links" id="menu">
         <a href="#gioca" data-i18n="navPlay">Prova</a>
         <a href="#caratteristiche" data-i18n="navFeatures">Caratteristiche</a>
         <a href="#stagioni" data-i18n="navSeasons">Stagioni</a>
         <a href="#screenshot" data-i18n="navShots">Screenshot</a>
       </div>
-      <button class="lang" id="lang" type="button" aria-label="Language">EN</button>
+      <button class="pill" id="lang" type="button" aria-label="Language">EN</button>
+      <a class="pill get" href="#download" data-i18n="get">Scarica</a>
+      <button class="pill burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span></button>
     </nav>
 
     <header class="hero" id="top">
@@ -38,7 +40,7 @@
           <div class="stores" data-stores></div>
           <p class="free" data-i18n="free">Gratis · niente pubblicità · gioca anche offline</p>
         </div>
-        <div class="keyart"><img src="assets/keyart.webp" alt="I sei Gobblins che saltano insieme" width="1100" height="560" /></div>
+        <div class="keyart"><img src="assets/keyart.webp" alt="I sei Gobblins che saltano insieme" width="1100" height="490" /></div>
       </div>
     </header>
 
@@ -78,7 +80,7 @@
           </article>
           <article class="card reveal" style="--i: 1">
             <span class="chip" style="--chip: #2a8fd0" data-i18n="chipEndless">Infinito</span>
-            <div class="art"><img src="assets/island-lagoon.webp" alt="" style="width: 120px; height: 96px" /></div>
+            <div class="art"><img class="wide" src="assets/island-lagoon.webp" alt="" /></div>
             <h3 data-i18n="f2Title">Isole senza fine</h3>
             <p data-i18n="f2Text">Prati di zucchero, spiagge di biscotto, vulcani di cioccolato: 10 livelli per isola, con tappe difficili e super difficili da conquistare.</p>
           </article>
@@ -116,7 +118,8 @@
         <h2 class="section-title candy" data-i18n="islTitle">Un arcipelago da divorare</h2>
         <p class="lead" data-i18n="islLead">Ogni isola nasconde dieci livelli e un forziere alla fine. E dopo l'ultima… ce n'è sempre un'altra.</p>
       </div>
-      <div class="islands" id="islands"></div>
+      <div class="strip islands" id="islands"></div>
+      <p class="swipe" data-i18n="swipe">← scorri →</p>
     </section>
 
     <section id="stagioni">
@@ -140,16 +143,17 @@
         <p class="eyebrow" data-i18n="shotEyebrow">Dal gioco</p>
         <h2 class="section-title candy" data-i18n="shotTitle">Guarda che spettacolo</h2>
       </div>
-      <div class="shots" id="shots"></div>
+      <div class="strip shots" id="shots"></div>
+      <p class="swipe" data-i18n="swipe">← scorri →</p>
     </section>
 
-    <section class="cta">
+    <section class="cta" id="download">
       <div class="wrap">
         <div class="box reveal">
           <div class="floaters" id="ctaFloaters"></div>
           <img class="icon" src="assets/icon.webp" alt="" />
           <h2 class="section-title candy" data-i18n="ctaTitle">I Gobblins hanno fame!</h2>
-          <p class="lead" style="margin-inline: auto" data-i18n="ctaLead">Presto su iPhone, iPad e Android. Gratis, senza pubblicità e senza registrazione.</p>
+          <p class="lead" data-i18n="ctaLead">Presto su iPhone, iPad e Android. Gratis, senza pubblicità e senza registrazione.</p>
           <div class="stores" data-stores></div>
         </div>
       </div>

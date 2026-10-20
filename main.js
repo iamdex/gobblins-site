@@ -31,7 +31,7 @@ const T = {
     thClassic: "Classico", thChristmas: "Natale",
     shotEyebrow: "Dal gioco", shotTitle: "Guarda che spettacolo",
     ctaTitle: "I Gobblins hanno fame!", ctaLead: "Presto su iPhone, iPad e Android. Gratis, senza pubblicità e senza registrazione.",
-    support: "Supporto", contact: "Contatti",
+    support: "Supporto", contact: "Contatti", get: "Scarica", swipe: "← scorri →",
   },
   en: {
     navPlay: "Try it", navFeatures: "Features", navSeasons: "Seasons", navShots: "Screenshots",
@@ -60,7 +60,7 @@ const T = {
     thClassic: "Classic", thChristmas: "Christmas",
     shotEyebrow: "From the game", shotTitle: "See it in action",
     ctaTitle: "The Gobblins are hungry!", ctaLead: "Coming soon to iPhone, iPad and Android. Free, no ads and no sign-up.",
-    support: "Support", contact: "Contact",
+    support: "Support", contact: "Contact", get: "Get it", swipe: "← swipe →",
   },
 };
 
@@ -123,7 +123,8 @@ function scatter(box, count, pieces) {
     const img = document.createElement("img");
     img.src = `assets/${pieces[i % pieces.length]}.webp`;
     img.alt = "";
-    img.style.cssText = `left:${rand(2, 92)}%;top:${rand(4, 88)}%;--s:${rand(38, 78)}px;--d:${rand(7, 12)}s;--delay:${rand(-8, 0)}s;opacity:${rand(0.35, 0.8)}`;
+    const size = rand(34, innerWidth < 640 ? 54 : 76);
+    img.style.cssText = `left:calc(${rand(0, 100)}% - ${size}px * ${rand(0, 1).toFixed(2)});top:${rand(4, 86)}%;--s:${size}px;--d:${rand(7, 12)}s;--delay:${rand(-8, 0)}s`;
     box.appendChild(img);
   }
   if (reduced) return;
@@ -136,8 +137,10 @@ function scatter(box, count, pieces) {
   }
 }
 const CLASSIC = [0, 1, 2, 3, 4, 5].map((k) => `classic-${k}`);
-scatter($("#floaters"), 9, [...CLASSIC, "rainbow", "bomb-0", "lineH-4"]);
-scatter($("#ctaFloaters"), 7, CLASSIC);
+// Fewer, fainter floaters on phones, where they would sit behind the text.
+const phone = innerWidth < 640;
+scatter($("#floaters"), phone ? 5 : 9, [...CLASSIC, "rainbow", "bomb-0", "lineH-4"]);
+scatter($("#ctaFloaters"), phone ? 4 : 7, CLASSIC);
 
 // Hero Gobblins lean towards the pointer.
 if (!reduced) {
@@ -155,16 +158,29 @@ parade.innerHTML = [...outfits, ...outfits].map((p, i) => `<img src="assets/${p}
 
 addEventListener("scroll", () => $("nav.top").classList.toggle("scrolled", scrollY > 30), { passive: true });
 
+// Phone menu: the burger opens the links; picking one (or tapping outside) closes it.
+const nav = $("nav.top");
+const setMenu = (open) => {
+  nav.classList.toggle("open", open);
+  $("#burger").setAttribute("aria-expanded", String(open));
+};
+$("#burger").addEventListener("click", (e) => {
+  e.stopPropagation();
+  setMenu(!nav.classList.contains("open"));
+});
+$("#menu").addEventListener("click", () => setMenu(false));
+document.addEventListener("click", (e) => !nav.contains(e.target) && setMenu(false));
+
 // ── islands & screenshots ──────────────────────────
 const ISLANDS = ["meadow", "cookie", "lagoon", "cream", "volcano", "clouds"];
 function renderIslands() {
   const t = T[lang];
   $("#islands").innerHTML = ISLANDS.map(
-    (id, i) => `<div class="island" style="--i:${i}"><img src="assets/island-${id}.webp" alt="" loading="lazy" /><b>${t.islands[i]}</b><span>${t.island} ${i + 1} · ${t.levels} ${i * 10 + 1}–${i * 10 + 10}</span></div>`,
+    (id, i) => `<div class="island" style="--i:${i}"><img src="assets/island-${id}.webp" alt="" loading="lazy" width="420" height="420" /><b>${t.islands[i]}</b><span>${t.island} ${i + 1} · ${t.levels} ${i * 10 + 1}–${i * 10 + 10}</span></div>`,
   ).join("");
 }
 function renderShots() {
-  $("#shots").innerHTML = [0, 1, 2, 3, 4, 5]
+  $("#shots").innerHTML = [0, 1, 2, 3, 4, 5, 6]
     .map((n) => `<div class="phone"><img src="assets/shot-${lang}-${n}.webp" alt="" loading="lazy" width="540" height="1170" /></div>`)
     .join("");
 }
@@ -206,7 +222,7 @@ document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
   let selected = null;
   let score = 0;
   let best = 0;
-  // The board is N cells plus 8px of padding on each side.
+  // clientWidth is the padding box: N cells plus 8px of padding on each side.
   const cell = () => (board.clientWidth - 16) / N;
   const place = (p, r, c) => (p.el.style.transform = `translate(${c * cell()}px, ${r * cell()}px)`);
   const wait = (ms) => new Promise((res) => setTimeout(res, reduced ? 0 : ms));
