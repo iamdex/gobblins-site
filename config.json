@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "adCoins": 40,
+  "adLimits": { "coins": 5, "moves": 3, "life": 3, "chest": 4 },
+  "adCooldownMs": { "coins": 180000, "moves": 30000, "life": 30000, "chest": 30000 },
+  "continuePrice": 150,
+  "maxContinues": 3,
+  "assist": { "rollout": 100, "from": 3, "fullFrom": 5, "half": 4, "full": 8 }
+}
