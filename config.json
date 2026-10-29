@@ -1,9 +1,11 @@
 {
-  "version": 1,
+  "version": 2,
   "adCoins": 40,
   "adLimits": { "coins": 5, "moves": 3, "life": 3, "chest": 4 },
   "adCooldownMs": { "coins": 180000, "moves": 30000, "life": 30000, "chest": 30000 },
   "continuePrice": 150,
   "maxContinues": 3,
+  "continueMoves": { "normal": 5, "hard": 7, "superhard": 8 },
+  "continueGifts": [["bomb"]],
   "assist": { "rollout": 100, "from": 3, "fullFrom": 5, "half": 4, "full": 8 }
 }
