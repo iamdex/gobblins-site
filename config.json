@@ -1,11 +1,12 @@
 {
-  "version": 2,
+  "version": 3,
   "adCoins": 40,
-  "adLimits": { "coins": 5, "moves": 3, "life": 3, "chest": 4 },
-  "adCooldownMs": { "coins": 180000, "moves": 30000, "life": 30000, "chest": 30000 },
+  "adLimits": { "coins": 5, "moves": 3, "life": 3, "chest": 4, "doubleWin": 3, "doubleGift": 1, "doubleChest": 1, "doubleEvent": 1 },
+  "adCooldownMs": { "coins": 180000, "moves": 30000, "life": 30000, "chest": 30000, "doubleWin": 30000, "doubleGift": 30000, "doubleChest": 30000, "doubleEvent": 30000 },
   "continuePrice": 150,
   "maxContinues": 3,
   "continueMoves": { "normal": 5, "hard": 7, "superhard": 8 },
   "continueGifts": [["bomb"]],
+  "keepAwakeIdleMs": 180000,
   "assist": { "rollout": 100, "from": 3, "fullFrom": 5, "half": 4, "full": 8 }
 }
